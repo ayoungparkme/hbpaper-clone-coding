@@ -1,0 +1,111 @@
+@import "vars";
+@import "mixins";
+
+#header {
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+  z-index: 2;
+  color: #fff;
+  transition: all 0.5s ease;
+
+  &.on {
+    background-color: #fff;
+    border-bottom: 1px solid #d9d9d9;
+    color: #111;
+    .logo {
+      a {
+        .white {
+          display: none;
+        }
+      }
+    }
+    .color {
+      display: block;
+    }
+    .lang-box {
+      .white {
+        display: none;
+      }
+      .color {
+        display: block;
+      }
+    }
+  }
+
+  &.full {
+    background-color: #fff;
+    height: 300px;
+    color: #111;
+    .logo {
+      a {
+        .white {
+          display: none;
+        }
+      }
+      .color {
+        display: block;
+      }
+    }
+  }
+  .lang-box {
+    .white {
+      display: none;
+    }
+    .color {
+      display: block;
+    }
+  }
+}
+
+.contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 92%;
+  max-width: 1520px;
+  padding-top: 50px;
+  margin: 0 auto;
+  .logo {
+    .color {
+      display: none;
+    }
+  }
+  .lang-box {
+    .color {
+      display: none;
+    }
+  }
+  .dep01 {
+    display: flex;
+    justify-content: space-between;
+    li {
+      a {
+        align-items: center;
+        width: 100%;
+        font-size: 1.13rem;
+        font-weight: 400;
+        padding: 0 30px;
+        position: relative;
+      }
+    }
+
+    .dep02 {
+      padding-top: 29px;
+      height: 163px;
+      margin-top: 0px;
+      padding-bottom: 29px;
+      margin-bottom: 0px;
+      li {
+        display: block;
+        width: 100%;
+        font-weight: 400;
+        padding: 5.5px 0;
+        a {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
