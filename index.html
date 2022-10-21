@@ -24,35 +24,34 @@
   </head>
 
   <body>
-    <header id="header" class="on">
-      <div class="contents">
-        <h1 class="logo">
+    <header id="header">
+      <div class="container">
+        <h1 id="logo">
           <a href="">
-            <img src="/images/layout/hd_logo_c.png" class="color" alt="" />
-            <img src="/images/layout/hd_logo_w.png" class="white" alt="" />
+            <img src="./images/layout/hd_logo_w.png" alt="" class="logo-white" />
+            <img src="./images/layout/hd_logo_c.png" alt="" class="logo-color" />
           </a>
         </h1>
-        <!-- prettier ignore -->
-        <nav class="gnb">
-          <ul class="dep01">
+        <nav id="gnb">
+          <ul class="list">
             <li>
-              <a href="">회사소개</a>
-              <ul class="dep02">
+              <a href="" class="depth01">회사소개</a>
+              <ul class="depth02">
                 <li><a href="">HB PAPER 소개</a></li>
                 <li><a href="">히스토리</a></li>
                 <li><a href="">인증서 및 수상내역</a></li>
               </ul>
             </li>
             <li>
-              <a href="">사업소개</a>
-              <ul class="dep02">
+              <a href="" class="depth01">사업소개</a>
+              <ul class="depth02">
                 <li><a href="">사업분야</a></li>
                 <li><a href="">기술 및 설비</a></li>
               </ul>
             </li>
             <li>
-              <a href="">제품소개</a>
-              <ul class="dep02">
+              <a href="" class="depth01">제품소개</a>
+              <ul class="depth02">
                 <li><a href="">종이식품용기</a></li>
                 <li><a href="">종이봉투</a></li>
                 <li><a href="">브라운메일러</a></li>
@@ -63,8 +62,8 @@
               </ul>
             </li>
             <li>
-              <a href="">고객센터</a>
-              <ul class="dep02">
+              <a href="" class="depth01">고객센터</a>
+              <ul class="depth02">
                 <li><a href="">공지사항</a></li>
                 <li><a href="">보도자료</a></li>
                 <li><a href="">온라인문의</a></li>
@@ -73,64 +72,116 @@
             </li>
           </ul>
         </nav>
-        <div class="lang-box">
-          <div class="white">
-            <img src="/images/layout/lang_w.png" alt="" />
-            <span>KOR</span>
-            <img src="/images/layout/lang_arrow_w.png" alt="" />
-          </div>
-          <div class="color">
-            <img src="/images/layout/lang_c.png" alt="" />
-            <span>KOR</span>
-            <img src="/images/layout/lang_arrow_c.png" alt="" />
+        <div class="util">
+          <div class="language">
+            <button>KOR</button>
+            <ul>
+              <li><a href="">eng</a></li>
+              <li><a href="">kor</a></li>
+            </ul>
           </div>
         </div>
       </div>
     </header>
-    <section id="main-visual">
-      <ul class="list swiper-wrapper">
-        <li class="visual01 swiper-slide"></li>
-        <li class="visual02 swiper-slide"></li>
-      </ul>
-      <div class="pagination"></div>
-    </section>
-    <!-- main visual end -->
-    <script>
-      const header = document.querySelector("#header");
-      const logo = document.querySelector(".logo");
-      const gnb = document.querySelector(".gnb");
+    <!-- header end -->
 
-      logo.addEventListener("mouseenter", function () {
+    <div id="main-visual">
+      <div class="mask">
+        <ul class="swiper-wrapper">
+          <li class="swiper-slide visual01">
+            <div class="img"></div>
+            <div class="txt" data-splitting>
+              <p class="sub">자연의 선순환을 꿈꾸며 친환경 포장 문화를 만들어가는 기업</p>
+              <p class="main"><strong>HB PAPER</strong></p>
+            </div>
+          </li>
+          <li class="swiper-slide visual02">
+            <div class="img"></div>
+            <div class="txt" data-splitting>
+              <p class="sub">그 소중한 가치를 알기에 우리는 돌아가려고 합니다.</p>
+              <p class="main"><strong>자연으로, 스마트하게</strong></p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- main visual end -->
+
+    <script>
+      Splitting();
+
+      const gnb = document.querySelector("#gnb");
+      const header = document.querySelector("#header");
+      gnb.addEventListener("mouseenter", function () {
         header.classList.add("on");
       });
-      logo.addEventListener("mouseleave", function () {
+      gnb.addEventListener("mouseleave", function () {
         header.classList.remove("on");
       });
 
-      gnb.addEventListener("mouseenter", function () {
-        header.classList.add("full");
-      });
-      gnb.addEventListener("mouseleave", function () {
-        header.classList.remove("full");
+      const visual01TL = gsap.timeline();
+      const visual02TL = gsap.timeline();
+      new Swiper("#main-visual .mask", {
+        effect: "fade",
+        on: {
+          slideChangeTransitionEnd: function (swiper) {
+            if (swiper.realIndex === 0) {
+              visual01TL.restart();
+              visual02TL.pause(0);
+            } else {
+              visual02TL.restart();
+              visual01TL.pause(0);
+            }
+          },
+        },
       });
 
-      const mainSlider = new Swiper("#main-visual", {
-        effect: "fade",
-        loop: true,
-        Speed: 1500,
-        autoplay: {
-          delay: 5000,
-        },
-        navigation: {
-          nextEl: "#main-visual .btn-next",
-          prevEl: "#main-visual .btn-prev",
-        },
-        pagination: {
-          el: ".pagination",
-          type: "bullets",
-          clickable: true,
-        },
-      });
+      visual01TL
+        .from("#main-visual .visual01 .sub .char", {
+          y: -100,
+          opacity: 0,
+          ease: "back",
+          duration: 1,
+          stagger: {
+            each: 0.02,
+          },
+        })
+        .from(
+          "#main-visual .visual01 .main .char",
+          {
+            x: 100,
+            opacity: 0,
+            stagger: {
+              each: 0.1,
+            },
+          },
+          ">-0.5"
+        );
+
+      visual02TL
+        .from("#main-visual .visual02 .sub .char", {
+          y: -100,
+          opacity: 0,
+          ease: "back",
+          duration: 1,
+          stagger: {
+            each: 0.02,
+          },
+        })
+        .from(
+          "#main-visual .visual02 .main .char",
+          {
+            x: 100,
+            opacity: 0,
+            stagger: {
+              each: 0.1,
+            },
+          },
+          ">-0.5"
+        );
+      // .sub animation이 끝나기 0.5s 전에 시작하고 싶을 때는 "-= 0.5 "or ">-0.5"
+      // .sub animation이 끝나고 1초 후에 시작하고 싶을 때는 ">1"
+      // .sub animation 시작 0.5s 후 시작하고 싶을 때는 0.5
     </script>
   </body>
 </html>
