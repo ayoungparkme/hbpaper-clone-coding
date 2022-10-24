@@ -2,9 +2,12 @@
 @import "mixins";
 
 #main-visual {
-  position: relative;
-  height: 100vh;
+  overflow: hidden;
+  .mask {
+    overflow: hidden;
+  }
   li {
+    position: relative;
     &.visual01 .img {
       background-image: url("../images/main/mv_01.jpg");
     }
@@ -18,10 +21,10 @@
     }
     .img {
       height: 100vh;
+      transform: scale(1.2);
       background-position: 50%;
       background-repeat: no-repeat;
       background-size: cover;
-      transform: scale(1.2);
       transition: all 5s ease;
       transition-delay: 0.5s;
     }
@@ -29,18 +32,127 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      color: #fff;
       z-index: 2;
       font-size: $h3;
-      transform: translate(-50%, -50%);
       text-align: center;
+      color: #fff;
+      transform: translate(-50%, -50%);
       strong {
-        font-weight: 700;
-        font-size: $h1 * 1.25;
         display: block;
         margin-top: 30px;
+        font-size: $h1 * 1.25;
+        font-weight: 700;
       }
     }
   }
 }
-// main visual end
+.section {
+  .title-box {
+    margin-bottom: 50px;
+    h2 {
+      font-size: $h4;
+      font-weight: 500;
+      color: $main-color;
+    }
+    p {
+      margin-top: 30px;
+      font-size: $h2;
+      font-weight: 500;
+      line-height: 1.25;
+    }
+  }
+}
+main {
+  #business {
+    overflow: hidden;
+    .container {
+      position: relative;
+      padding-left: 200px;
+    }
+    ul {
+      display: flex;
+      justify-content: space-between;
+      li {
+        &:nth-last-child(1) {
+          margin-top: -50px;
+        }
+        img {
+          border-radius: 20px;
+        }
+        .txt {
+          margin-top: 40px;
+          h3 {
+            font-size: $h3;
+            font-weight: 500;
+          }
+          p {
+            margin-top: 20px;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+    .circle-txt {
+      position: absolute;
+      top: 0;
+      right: 80px;
+      font-size: $h2;
+      font-weight: 500;
+      color: #ccc;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      animation: circle-ani 20s linear infinite;
+    }
+  }
+  #product {
+    .title-box {
+      padding-left: 200px;
+      p {
+        font-size: $h4;
+      }
+      strong {
+        display: block;
+        margin-top: 50px;
+        font-size: $h2;
+        font-weight: 700;
+      }
+      a {
+        text-transform: uppercase;
+        display: block;
+        font-size: $h4;
+        font-weight: 500;
+        margin-top: 50px;
+        &:after {
+          content: "\f061";
+          font-family: "FontAwesome";
+          margin-left: 30px;
+        }
+      }
+    }
+    li {
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    @for $i from 1 through 7 {
+      .product0#{$i} {
+        background-image: url("../images/main/ms3_0#{$i}.jpg");
+      }
+    }
+  }
+}
+
+.fp-warning,
+.fp-watermark {
+  display: none;
+}
+
+@keyframes circle-ani {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
