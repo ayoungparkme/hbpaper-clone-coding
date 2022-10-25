@@ -61,6 +61,18 @@
       line-height: 1.25;
     }
   }
+  .circle-txt {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    right: 80px;
+    font-size: $h2;
+    font-weight: 500;
+    color: #ccc;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    animation: circle-ani 20s linear infinite;
+  }
 }
 main {
   #business {
@@ -92,21 +104,9 @@ main {
         }
       }
     }
-    .circle-txt {
-      position: absolute;
-      top: 0;
-      right: 80px;
-      font-size: $h2;
-      font-weight: 500;
-      color: #ccc;
-      letter-spacing: 0.5em;
-      text-transform: uppercase;
-      animation: circle-ani 20s linear infinite;
-    }
   }
   #product {
     .title-box {
-      padding-left: 200px;
       p {
         font-size: $h4;
       }
@@ -138,6 +138,142 @@ main {
     @for $i from 1 through 7 {
       .product0#{$i} {
         background-image: url("../images/main/ms3_0#{$i}.jpg");
+      }
+    }
+    .circle-txt {
+      right: 300px;
+      top: 200px;
+    }
+    .control-box {
+      width: 100%;
+      position: absolute;
+      bottom: 100px;
+      z-index: 3;
+      .container {
+        display: flex;
+        align-items: center;
+      }
+      .btns {
+        margin-left: 30px;
+        button {
+          font-size: 22px;
+        }
+        .btn-play {
+          display: none;
+        }
+      }
+      .pagination-box {
+        position: relative;
+      }
+      .pagination {
+        .swiper-pagination-bullet {
+          width: 12px;
+          height: 12px;
+          opacity: 1;
+          margin: 0;
+          margin-right: 50px;
+          background-color: #fff;
+          border: 3px solid #111;
+          &-active {
+            background-color: #111;
+          }
+          &:nth-last-child(1) {
+            margin-right: 0;
+          }
+        }
+      }
+      .line {
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: #111;
+        top: 50%;
+        margin-top: -1px;
+        transition: all 5s linear;
+      }
+    }
+  }
+  #news {
+    .container {
+      display: flex;
+      justify-content: space-between;
+      .title-box {
+        p {
+          font-size: $h4;
+        }
+        strong {
+          display: block;
+          margin-top: 50px;
+          font-size: $h2;
+          font-weight: 700;
+        }
+        a {
+          text-transform: uppercase;
+          display: block;
+          font-size: $h4;
+          font-weight: 500;
+          margin-top: 50px;
+          &:after {
+            content: "\f061";
+            font-family: "FontAwesome";
+            margin-left: 30px;
+          }
+        }
+      }
+      .contents-box {
+        width: 1000px;
+        .notice {
+          display: flex;
+          padding: 30px 20px;
+          font-size: $h4;
+          border-top: 2px solid #111;
+          border-bottom: 1px solid #111;
+          p {
+            font-weight: 500;
+            margin-left: 30px;
+          }
+          .date {
+            margin-left: auto;
+          }
+        }
+        .notice-list-box {
+          padding: 30px 0;
+          border-bottom: 1px solid #111;
+          li {
+            background: url("../images/main/k_none.jpg");
+            background-size: cover;
+            border-radius: 20px;
+            overflow: hidden;
+            a {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              padding: 30px;
+              font-size: $h4;
+              background-color: rgba(0, 0, 0, 0.2);
+              opacity: 0;
+              transition: all 0.25s ease;
+              &:hover {
+                opacity: 1;
+              }
+              .sticker {
+                font-weight: 500;
+              }
+              p {
+                @include multiElilipsis;
+                margin-top: 20px;
+              }
+              .more {
+                @include icon("\f061") {
+                  display: block;
+                  margin-top: 20px;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

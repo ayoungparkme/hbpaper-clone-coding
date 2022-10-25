@@ -56,6 +56,19 @@
   font-weight: 500;
   line-height: 1.25;
 }
+.section .circle-txt {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  right: 80px;
+  font-size: 36px;
+  font-weight: 500;
+  color: #ccc;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  -webkit-animation: circle-ani 20s linear infinite;
+          animation: circle-ani 20s linear infinite;
+}
 
 main #business {
   overflow: hidden;
@@ -84,21 +97,6 @@ main #business ul li .txt h3 {
 main #business ul li .txt p {
   margin-top: 20px;
   font-size: 18px;
-}
-main #business .circle-txt {
-  position: absolute;
-  top: 0;
-  right: 80px;
-  font-size: 36px;
-  font-weight: 500;
-  color: #ccc;
-  letter-spacing: 0.5em;
-  text-transform: uppercase;
-  -webkit-animation: circle-ani 20s linear infinite;
-          animation: circle-ani 20s linear infinite;
-}
-main #product .title-box {
-  padding-left: 200px;
 }
 main #product .title-box p {
   font-size: 20px;
@@ -147,6 +145,141 @@ main #product .product06 {
 }
 main #product .product07 {
   background-image: url("../images/main/ms3_07.jpg");
+}
+main #product .circle-txt {
+  right: 300px;
+  top: 200px;
+}
+main #product .control-box {
+  width: 100%;
+  position: absolute;
+  bottom: 100px;
+  z-index: 3;
+}
+main #product .control-box .container {
+  display: flex;
+  align-items: center;
+}
+main #product .control-box .btns {
+  margin-left: 30px;
+}
+main #product .control-box .btns button {
+  font-size: 22px;
+}
+main #product .control-box .btns .btn-play {
+  display: none;
+}
+main #product .control-box .pagination-box {
+  position: relative;
+}
+main #product .control-box .pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  opacity: 1;
+  margin: 0;
+  margin-right: 50px;
+  background-color: #fff;
+  border: 3px solid #111;
+}
+main #product .control-box .pagination .swiper-pagination-bullet-active {
+  background-color: #111;
+}
+main #product .control-box .pagination .swiper-pagination-bullet:nth-last-child(1) {
+  margin-right: 0;
+}
+main #product .control-box .line {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #111;
+  top: 50%;
+  margin-top: -1px;
+  transition: all 5s linear;
+}
+main #news .container {
+  display: flex;
+  justify-content: space-between;
+}
+main #news .container .title-box p {
+  font-size: 20px;
+}
+main #news .container .title-box strong {
+  display: block;
+  margin-top: 50px;
+  font-size: 36px;
+  font-weight: 700;
+}
+main #news .container .title-box a {
+  text-transform: uppercase;
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 50px;
+}
+main #news .container .title-box a:after {
+  content: "\f061";
+  font-family: "FontAwesome";
+  margin-left: 30px;
+}
+main #news .container .contents-box {
+  width: 1000px;
+}
+main #news .container .contents-box .notice {
+  display: flex;
+  padding: 30px 20px;
+  font-size: 20px;
+  border-top: 2px solid #111;
+  border-bottom: 1px solid #111;
+}
+main #news .container .contents-box .notice p {
+  font-weight: 500;
+  margin-left: 30px;
+}
+main #news .container .contents-box .notice .date {
+  margin-left: auto;
+}
+main #news .container .contents-box .notice-list-box {
+  padding: 30px 0;
+  border-bottom: 1px solid #111;
+}
+main #news .container .contents-box .notice-list-box li {
+  background: url("../images/main/k_none.jpg");
+  background-size: cover;
+  border-radius: 20px;
+  overflow: hidden;
+}
+main #news .container .contents-box .notice-list-box li a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: all 0.25s ease;
+}
+main #news .container .contents-box .notice-list-box li a:hover {
+  opacity: 1;
+}
+main #news .container .contents-box .notice-list-box li a .sticker {
+  font-weight: 500;
+}
+main #news .container .contents-box .notice-list-box li a p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 3em;
+  line-height: 1.5;
+  margin-top: 20px;
+}
+main #news .container .contents-box .notice-list-box li a .more:after {
+  content: "\f061";
+  font-family: "FontAwesome";
+  display: block;
+  margin-top: 20px;
 }
 
 .fp-warning,
