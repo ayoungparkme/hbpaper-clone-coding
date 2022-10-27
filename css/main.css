@@ -287,6 +287,88 @@ main #news .container .contents-box .notice-list-box li a .more:after {
   display: none;
 }
 
+#fp-nav {
+  transition: all 0.25s ease-in-out 0.5s;
+}
+#fp-nav.color ul li a span {
+  background-color: #111 !important;
+}
+#fp-nav.color ul li a span:before {
+  border-color: #111;
+}
+#fp-nav.color ul li .fp-tooltip {
+  color: #111;
+}
+#fp-nav.fp-right {
+  right: 50px;
+}
+#fp-nav.last {
+  right: -200px;
+}
+#fp-nav ul li {
+  width: 30px;
+  height: 30px;
+  margin: 30px 0;
+}
+#fp-nav ul li:nth-last-child(1) {
+  display: none;
+}
+#fp-nav ul li:hover a span,
+#fp-nav ul li:hover a.active span {
+  width: 5px;
+  height: 5px;
+  background-color: #fff;
+  margin: 0;
+}
+#fp-nav ul li a.active span {
+  width: 5px;
+  height: 5px;
+  background-color: #fff;
+  margin: 0;
+}
+#fp-nav ul li a.active span:before {
+  transform: translate(-50%, -50%) scale(1);
+}
+#fp-nav ul li a span {
+  width: 5px;
+  height: 5px;
+  background-color: #fff;
+  margin: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+}
+#fp-nav ul li a span:before {
+  transition: all 0.25s ease;
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: 3px solid #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 100px;
+  transform: translate(-50%, -50%) scale(0);
+}
+#fp-nav ul li .fp-tooltip {
+  text-transform: uppercase;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  font-family: "Roboto";
+  font-weight: 700;
+  opacity: 0.5;
+  width: auto;
+}
+#fp-nav ul li .fp-tooltip.fp-right {
+  right: 60px;
+}
+#fp-nav ul li a.active + .fp-tooltip {
+  opacity: 1;
+}
+
 @-webkit-keyframes circle-ani {
   0% {
     transform: rotate(0);
